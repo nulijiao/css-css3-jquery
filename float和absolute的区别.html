@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div{
+            width: 200px;
+            height: 200px;
+            border:10px solid red;
+            background-color:blue;
+            position:absolute;
+            /*padding:10px ;*/
+
+
+
+        }
+        #div2{
+            width: 50px;
+            height: 50px;
+            background-color: green;
+
+            /*float:left;*/
+            position: absolute;
+            left:0;
+            top:0;
+
+        }
+        /*再次关于一个定位的知识点总结如下浮动（特殊的脱离文档流方式）和绝对定位的区别就是浮动不会出现覆盖现象，（无论浮动的位置也是浮动元素还是非浮动，都不会出现覆盖的渲染效果）渲染效果的区别：但是绝对定位会出现覆盖现象虽然都脱离文档流但是绝对定位都会覆盖无论定位的位置是不脱离的元素还是同样浮动的元素依然会覆盖，所以绝对定位的效果真是强！补充：浮动的渲染效果是相对于父元素，绝对定位是相对于已经定位的父元素，而且是相对于父亲的内容width因为本身自己也是父元素的内容,但是不会从父亲的border算起的,但是padding是包括算在内容里面的，是子元素相对的一部分。浮动的左浮测试发现是不相对于父元素的padding的所以浮动只相对于父元素的width（内容)
+        //这就是二者的区别，同时之定义absolute没有写left和top值就会默认定位位值left:0;top：0；*/
+        *{
+            margin:0;
+            padding:0;
+        }
+    </style>
+</head>
+<body>
+<div id="div">
+    <div id="div2"></div>
+</div>
+</body>
+</html>
