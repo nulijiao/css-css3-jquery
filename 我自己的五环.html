@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>伪元素的应用</title>
+    <style>
+        *{
+            margin:0;
+            border:0;
+            padding: 0;
+        }
+        .circle,.circle::after{
+            width: 200px;
+            height: 200px;
+
+            -moz-border-radius: 50%;
+            -o-border-radius:50%;
+            -webkit-border-radius:50% ;
+            -ms-border-radius:50%;
+            border-radius: 50%;
+            border:10px solid;
+
+            position:absolute;
+        }
+        .circle::after{
+            content:" ";
+            left:-10px;
+            top:-10px;
+        }
+        div.bl{
+            left:0;
+            top:0;
+            border-color: blue;
+        }
+        div.bl.circle::after{
+            border-color: blue;
+            z-index: 1;
+            border-bottom: transparent;
+        }
+        div.blk{
+            left:225px;
+            top:0;
+            border-color: black;
+        }
+        div.blk.circle::after{
+            border-color: black;
+            z-index: 1;
+            border-bottom-color: transparent;
+
+        }
+        div.rd{
+            left:450px;
+            top:0;
+            border-color: blue;
+        }
+        div.rd.circle::after{
+            border-color: red;
+        }
+        div.yl{
+            left:130px;
+            top:120px;
+            border-color: yellow;
+        }
+        div.yl.circle::after{
+            border-color: yellow;
+
+        }
+        div.gr{
+            left:360px;
+            top:120px;
+            border-color: green;
+        }
+        div.gr.circle::after{
+            border-color: green;
+            border-right-color:transparent;
+        }
+        /*原来自己设置的盲点在于设置的是某个边的颜色透明，这样那一段就会另一个覆盖，并不是什么覆盖优先级，就是颜色没了，不就会那部分被其他的覆盖，所以啊，因为他是覆盖的，但是还是有优先级的，因为透明的就会露出我们之前的，而后来覆盖的那个伪元素是后覆盖的所以会在交叉部分覆盖*/
+    </style>
+</head>
+<body>
+<div class="circle   bl"></div>
+<div class="circle  blk"></div>
+<div class="circle  rd"></div>
+<div class="circle  yl"></div>
+<div class="circle  gr"></div>
+</body>
+</html>
