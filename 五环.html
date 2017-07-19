@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>not  my wuhuan</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .circle, .circle::after
+        {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 10px solid;
+            position: absolute;
+        }
+        /*这是设置伪元素的样式，但是只有有content那一项才是真正的添加上了*/
+        /*二者的样式是一致的后面追加的伪元素和他父亲的内容是一样的*/
+        .circle::after{
+            content: "";
+            top: -10px;
+            left: -10px;
+        }
+        /*因为是绝对定位不相对于父元素的border所以就会有不能完全和父亲重合所以设定自己的left和top包含进border这样才能重合*/
+        /*设置-10因为是为元素作为内联的子元素及时因为absolute成为了块级元素但是会是在里面相对于定位的circle来但是就是circle的里面内容不是从circle的border算起*/
+        /*为什么追加的伪元素可以设置宽高呢，原因在于他绝对定位了，所以变成了一个块级元素因为脱离文档流的作用*/
+        .blue{
+            top: 0;
+            left: 0;
+            border-color: blue;
+        }
+        .blue.circle::after{
+            border-color: blue;
+            z-index: 1;
+            border-bottom-color: transparent;
+        }
+        .black{
+            border-color: black;
+            top: 0;
+            left: 230px;
+        }
+        .black.circle::after{
+            border-color: black;
+            z-index: 1;
+            border-left-color: transparent;
+        }
+        .red{
+            border-color: red;
+            top: 0;
+            left: 460px;
+        }
+        .red.circle::after{
+            border-color: red;
+            z-index: 2;
+            border-left-color: transparent;
+        }
+        .yellow{
+            border-color: yellow;
+            top: 110px;
+            left: 115px;
+        }
+        .yellow.circle::after{
+            border-color: yellow;
+        }
+        .green{
+            border-color: green;
+            top: 110px;
+            left: 345px;
+        }
+        .green.circle::after{
+            border-color: green;
+            z-index: 1;
+            border-top-color: transparent;
+        }
+    </style>
+</head>
+<body>
+<div class="circle blue"></div>
+<div class="circle black"></div>
+<div class="circle red"></div>
+<div class="circle yellow"></div>
+<div class="circle green"></div>
+</body>
+</html>
+<!--五环总结：本来是只有5个div通过绝对定位来实现我们的五环叠加在一起，但是会发现有后面的会覆盖的前面的所以因为五环的效果是有的前面的可以覆盖到后面的就需要一个伪元素的覆盖在上面虽然还会出现和之前的一样但是可以设置伪元素的某个z-index然后实现被覆盖的在上面，
+举个例子吧：例如本来就是黄色的是后面的在黑色的后面所以二者交叉的部分会出现黄色覆盖黑色，后面同样出现的蓝色也会在二者交叉的地方覆盖黑色，但是想要蓝色在黑色交叉部分黑色覆盖蓝色就要改变为元素黑的z-index这样就有优先出现但是同样页覆盖了黄色这不是我们想要的，但是我们可以设置蓝色和黄色交叉部分是在蓝色的半个圆，所以设置蓝色的伪元素为透明，蓝色的下面就剩下初始的第一个div但是因为伪类的黄色是后定位的，所以一定会覆盖之前的那个蓝色，因为时候出现的，这样就实现了蓝色交叉覆盖部分，有一部分表现出自己，而另一部分表现出另一个好像穿插的效果，这就是设置原理，应用伪元素实现覆盖的解除再重新露出初始的  -->
