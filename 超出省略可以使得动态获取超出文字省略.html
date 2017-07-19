@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #div{
+            width: 200px;
+            white-space:nowrap;
+            overflow:hidden;
+            text-overflow:ellipsis;
+        border:1px solid red;
+        }
+    </style>
+</head>
+<body>
+<div id="div" >sghdhgsafdjysdjggfghhgfffffffffffffffffffffff</div>
+</body>
+</html>
+<!-- 表示兼容火狐-moz-border-image:url(border.png) 30 30 round; /* 老的 Firefox */
+表示兼容webkit-webkit-border-image:url(border.png) 30 30 round; /* Safari 和 Chrome */
+表示兼容欧朋-o-border-image:url(border.png) 30 30 round; /* Opera */
+--    border-radius：50%表示成了一个圆hover在早期为.hover>
+//在选择其中选择谁就必须写谁ul li:only-chiled找到li是作为唯一一个孩子的li
+nth-child n是从1开始*/
+border默认灰色
+white-space:nowrap;使得不换行，不设置这个否则文字超出范围会自动换行
+overflow:hidden;
+text-overflow:ellipsis;超出省略
+这三个属性保证了文字不会换行同时超出内容标称省略号，css3属性为兼容就要写5个
+rgba表示可设置文字和透明度
+网络文字所以要有这样的文字库，少用特殊字体因为加载不好，要下载字体库.wff字体库火，起一个font-family:然后某个元素用就直接font-family：你的字体库名字
+border-radius边框圆角半径   @font的优先级更高
